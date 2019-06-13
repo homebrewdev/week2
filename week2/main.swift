@@ -141,12 +141,12 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 // MARK: - тест задачи 2
 //Задача 2 :
 //Создать структуру Person с stored property name, lastName и computed property fullName. fullName должен иметь и геттер и сеттер. Пусть первое слово в сеттере будет именем
-var persona = Person(name: "John", lastName: "Smith")
+var persona = Person(name: "John", lastName: "Bro")
 
 // проверяем геттер
-print(persona.fullName.description)
+print(persona.fullName) //Bro John
 
 // проверяем сеттер 
-persona.fullName.description = "Джон Джонович"
+persona.fullName = "Джон Джонович"
 print(persona.name) // Джон
 print(persona.lastName) // Джонович

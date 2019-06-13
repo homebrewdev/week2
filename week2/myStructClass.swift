@@ -34,9 +34,9 @@ struct FullName {
 struct Person {
     var name: String
     var lastName: String
-    var fullName: FullName {
+    var fullName: String {
         get {
-            return FullName(description: lastName + " " + name) //возвращаем Фамилия + пробел + имя
+            return lastName + " " + name //возвращаем Фамилия + пробел + имя
         }
         set(newFullName) {
             var str = newFullName.description // полностью строка с именем + пробелом + фамилией
