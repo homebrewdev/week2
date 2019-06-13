@@ -105,6 +105,8 @@ print("Покупатель купил: \(String(describing: custom.productName)
 print("Покупатель замечен в кражах? ответ: \(custom2.client.fraudStatus)") // Покупатель замечен в кражах? false
 // доказано - при копировании структуры custom2 свойство структуры класс Buyer остался тот же somePerson = Buyer() Покупатель: week2.Buyer Покупатель: week2.Buyer
 
+
+// MARK: - эксперименты из примеров в swiftbook
 //Вычисляемые свойства
 //В дополнение к свойствам хранения, классам, структурам и перечислениям можно добавить вычисляемые свойства, которые фактически не хранят значения. Вместо этого они предоставляют геттер и опциональный сеттер для получения и установки других свойств косвенно.
 struct Point {
@@ -135,10 +137,16 @@ square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 // Выведет "square.origin is now at (10.0, 10.0)"
 
-//let fn = FullName.init(name: "John", lastName: "Smith")
+
+// MARK: - тест задачи 2
+//Задача 2 :
+//Создать структуру Person с stored property name, lastName и computed property fullName. fullName должен иметь и геттер и сеттер. Пусть первое слово в сеттере будет именем
 var persona = Person(name: "John", lastName: "Smith")
 
+// проверяем геттер
 print(persona.fullName.description)
-persona.fullName.description = "Harris"
 
-print(persona.fullName.description)
+// проверяем сеттер 
+persona.fullName.description = "Джон Джонович"
+print(persona.name) // Джон
+print(persona.lastName) // Джонович
