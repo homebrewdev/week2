@@ -99,11 +99,11 @@ var custom = Custom(client: somePerson, pay_amount: 40.0, productName: "Булк
 var custom2 = Custom(client: somePerson, pay_amount: 120.0, productName: "Тушонка")
 
 
-print("Покупатель: \(custom.client)")   // Покупатель: week2.Person
-print("Покупатель2: \(custom2.client)") // Покупатель: week2.Person
+print("Покупатель: \(custom.client)")   // Покупатель: week2.Buyer
+print("Покупатель2: \(custom2.client)") // Покупатель: week2.Buyer
 print("Покупатель купил: \(String(describing: custom.productName)) по цене = \(custom.pay_amount)")
 print("Покупатель замечен в кражах? ответ: \(custom2.client.fraudStatus)") // Покупатель замечен в кражах? false
-// доказано - при копировании структуры custom2 класс остался тот же somePerson = Person()
+// доказано - при копировании структуры custom2 свойство структуры класс Buyer остался тот же somePerson = Buyer() Покупатель: week2.Buyer Покупатель: week2.Buyer
 
 //Вычисляемые свойства
 //В дополнение к свойствам хранения, классам, структурам и перечислениям можно добавить вычисляемые свойства, которые фактически не хранят значения. Вместо этого они предоставляют геттер и опциональный сеттер для получения и установки других свойств косвенно.
