@@ -24,6 +24,7 @@ class Buyer {
     var score: Double = 0.0
     var fraudStatus: Bool = false
 }
+
 //  MARK: - Задача 2
 //2. Создать структуру Person с stored property name, lastName и computed property fullName. fullName должен иметь и геттер и сеттер. Пусть первое слово в сеттере будет именем
 struct FullName {
@@ -35,11 +36,15 @@ struct Person {
     var lastName: String
     var fullName: FullName {
         get {
-            return FullName(description: lastName + " " + name)
+            return FullName(description: lastName + " " + name) //возвращаем Фамилия + пробел + имя
         }
         set(newFullName) {
-            name = newFullName.description
+            var str = newFullName.description // полностью строка с именем + пробелом + фамилией
+            let indexOfSpace = str.index(of: " ") ?? str.endIndex
+            name = String(str[..<indexOfSpace]) // эта часть до пробела = Имя -> name
+            str.remove(at: indexOfSpace)  // удаляем пробел из строки
+            lastName = String(str[indexOfSpace...]) // и потом спокойно оставшуюся часть пишем в lastName
         }
     }
-    
+
 }
