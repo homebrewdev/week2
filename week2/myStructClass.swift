@@ -46,5 +46,84 @@ struct Person {
             lastName = String(str[indexOfSpace...]) // и потом спокойно оставшуюся часть пишем в lastName
         }
     }
-
 }
+
+//  MARK: - Задача 3
+//  3. Создать структуру со свойством типа стринг и subscript методом, возвращающим/устанавливающим символ по соответствующему индексу
+struct Example {
+    var sample: String
+    subscript (index index: Int) -> Character {
+        get{
+            var characters = Array(sample)
+            let character = characters[index]
+            return character
+        }
+    }
+    subscript (insert index: Int, character char: Character) -> Bool {
+        get{return true}
+        set{
+            var characters = Array(sample)
+            characters.insert(char, at: index)
+            sample = String(characters)
+        }
+    }
+}
+
+// MARK: -  Задача 4
+//4. Создать класс Shape с методом area, возвращающим площадь и методом shapeDescription возвращающим «shape is»
+//Создать подклассы Circle, Square с нужным для вычисления площади свойствами и методами инициализации. Переопределить нужные методы суперкласса. shapeDescription должен вернуть shape is circle и shape is square соответственно.
+//Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
+
+class Shape {
+    
+    func shapeDescription() -> String {
+        return "shape is "
+    }
+    
+    init() {}
+    
+    func area() -> Double {
+        return 0.0
+    }
+}
+
+class Circle: Shape {
+    var name: String
+    var areaSize: Double = 0.0
+    var radius: Double = 0.0
+    
+    init(radius: Double, name: String) {
+        self.name = name
+        self.radius = radius
+        self.areaSize = 3.14 * radius * radius
+    }
+    
+    override func area() -> Double {
+        return 3.14 * radius * radius
+    }
+    
+    override func shapeDescription() -> String {
+        return "shape is \(name)"
+    }
+}
+
+class Square: Shape {
+    var name: String
+    var areaSize: Double = 0.0
+    var size: Double = 0.0
+    
+    init(size: Double, name: String) {
+        self.name = name
+        self.size = size
+        self.areaSize = size * size
+    }
+    
+    override func area() -> Double {
+        return size * size
+    }
+    
+    override func shapeDescription() -> String {
+        return "shape is \(name)"
+    }
+}
+

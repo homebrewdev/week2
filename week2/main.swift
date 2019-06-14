@@ -150,3 +150,29 @@ print(persona.fullName) //Bro John
 persona.fullName = "Джон Джонович"
 print(persona.name) // Джон
 print(persona.lastName) // Джонович
+
+//  MARK: - Задача 3
+//  3. Создать структуру со свойством типа стринг и subscript методом, возвращающим/устанавливающим символ по соответствующему индексу
+var ex = Example(sample: "строка")
+// проверка работы геттера сабскрипта
+print("Символ по индексу 3 = \(ex[index: 2])") // Символ по индексу 2 = р
+
+let insertSomeChar = ex[insert: 2, character: "f"]
+print(ex.sample)
+
+
+// MARK: -  Задача 4
+//4. Создать класс Shape с методом area, возвращающим площадь и методом shapeDescription возвращающим «shape is»
+//Создать подклассы Circle, Square с нужным для вычисления площади свойствами и методами инициализации. Переопределить нужные методы суперкласса. shapeDescription должен вернуть shape is circle и shape is square соответственно.
+//Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
+
+let sqr = Square(size: 6.0, name: "Square")
+let circle = Circle(radius: 8.7, name: "Circle")
+
+print("Площадь квадрата размером \(sqr.size) = \(sqr.areaSize)") // Площадь квадрата размером 6.0 = 36.0
+print("Площадь круга радиусом \(circle.radius)= \(circle.areaSize)") // Площадь круга радиусом 8.7= 237.66659999999996
+
+print(sqr.shapeDescription()) // shape is Square
+print(circle.shapeDescription()) // shape is Circle
+
+// наполняем фигурами массив
