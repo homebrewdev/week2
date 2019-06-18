@@ -166,8 +166,11 @@ print(ex.sample)
 //Создать подклассы Circle, Square с нужным для вычисления площади свойствами и методами инициализации. Переопределить нужные методы суперкласса. shapeDescription должен вернуть shape is circle и shape is square соответственно.
 //Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
 
-let sqr = Square(size: 6.0, name: "Square")
-let circle = Circle(radius: 8.7, name: "Circle")
+let sqr = Square(size: 6.0, name: "Квадрат")
+let circle = Circle(radius: 8.7, name: "Круг")
+
+let sqr2 = Square(size: 10.0, name: "Квадрат 10 на 10")
+let circle2 = Circle(radius: 15.5, name: "Круг 15")
 
 print("Площадь квадрата размером \(sqr.size) = \(sqr.areaSize)") // Площадь квадрата размером 6.0 = 36.0
 print("Площадь круга радиусом \(circle.radius)= \(circle.areaSize)") // Площадь круга радиусом 8.7= 237.66659999999996
@@ -175,4 +178,13 @@ print("Площадь круга радиусом \(circle.radius)= \(circle.are
 print(sqr.shapeDescription()) // shape is Square
 print(circle.shapeDescription()) // shape is Circle
 
-// наполняем фигурами массив
+var figuresDict: Dictionary<Int, Shape> = [1: sqr, 2: circle, 3: sqr2, 4: circle2]
+// наполняем фигурами множество
+
+for figure in figuresDict {
+    print("\(figure.key). \(figure.value.shapeDescription())")
+    // 3. shape is Квадрат 10 на 10
+    // 1. shape is Квадрат
+    // 2. shape is Круг
+    // 4. shape is Круг 15
+}
