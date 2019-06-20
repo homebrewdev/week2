@@ -34,9 +34,9 @@ struct FullName {
 struct Person {
     var name: String
     var lastName: String
-    var fullName: FullName {
+    var fullName: String {
         get {
-            return FullName(description: lastName + " " + name) //возвращаем Фамилия + пробел + имя
+            return lastName + " " + name //возвращаем Фамилия + пробел + имя
         }
         set(newFullName) {
             var str = newFullName.description // полностью строка с именем + пробелом + фамилией
@@ -46,5 +46,66 @@ struct Person {
             lastName = String(str[indexOfSpace...]) // и потом спокойно оставшуюся часть пишем в lastName
         }
     }
-
 }
+
+//  MARK: - Задача 3
+//  3. Создать структуру со свойством типа стринг и subscript методом, возвращающим/устанавливающим символ по соответствующему индексу
+struct Example {
+    var sample: String
+    
+    subscript (index index: Int, character char: Character) -> Character {
+        get{
+            var characters = Array(sample)
+            let character = characters[index]
+            return character
+        }
+        set{
+            //var characters = Array(sample)
+            //characters.insert(char, at: index)
+            //sample = String(characters)
+            sample.insert(char, at: sample.index(sample.startIndex, offsetBy: index))
+        }
+    }
+}
+
+// MARK: -  Задача 4
+//4. Создать класс Shape с методом area, возвращающим площадь и методом shapeDescription возвращающим «shape is»
+//Создать подклассы Circle, Square с нужным для вычисления площади свойствами и методами инициализации. Переопределить нужные методы суперкласса. shapeDescription должен вернуть shape is circle и shape is square соответственно.
+//Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
+
+class Shape {
+    var name: String = "Shape"
+    var areaSize: Double = 0.0
+    
+    func shapeDescription() -> String {
+        return "shape is \(name)"
+    }
+    
+    init() {}
+    
+}
+
+class Circle: Shape {
+    var radius: Double
+    
+    init(radius: Double, name: String) {
+        self.radius = radius
+        super.init()
+        self.name = name
+        self.areaSize = 3.14 * radius * radius
+    }
+    
+}
+
+class Square: Shape {
+    var size: Double = 0.0
+    
+    init(size: Double, name: String) {
+        self.size = size
+        super.init()
+        self.name = name
+        self.areaSize = size * size
+    }
+    
+}
+
