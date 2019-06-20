@@ -103,7 +103,7 @@ print("Покупатель: \(custom.client)")   // Покупатель: week2
 print("Покупатель2: \(custom2.client)") // Покупатель: week2.Buyer
 print("Покупатель купил: \(String(describing: custom.productName)) по цене = \(custom.pay_amount)")
 print("Покупатель замечен в кражах? ответ: \(custom2.client.fraudStatus)") // Покупатель замечен в кражах? false
-// доказано - при копировании структуры custom2 свойство структуры класс Buyer остался тот же somePerson = Buyer() Покупатель: week2.Buyer Покупатель: week2.Buyer
+// доказано - при копировании структуры custom2 свойство структуры класс Buyer остался тот же somePerson = Buyer() Покупатель: week2.Buyer Покупатель2: week2.Buyer
 
 
 // MARK: - эксперименты из примеров в swiftbook
@@ -155,9 +155,9 @@ print(persona.lastName) // Джонович
 //  3. Создать структуру со свойством типа стринг и subscript методом, возвращающим/устанавливающим символ по соответствующему индексу
 var ex = Example(sample: "строка")
 // проверка работы геттера сабскрипта
-print("Символ по индексу 3 = \(ex[index: 2])") // Символ по индексу 2 = р
+print("Символ по индексу 2 = \(ex[index:2, character: "s"])") // Символ по индексу 2 = р
 
-let insertSomeChar = ex[insert: 2, character: "f"]
+let insertSomeChar = ex[index: 2, character: "f"]
 print(ex.sample)
 
 
@@ -166,8 +166,8 @@ print(ex.sample)
 //Создать подклассы Circle, Square с нужным для вычисления площади свойствами и методами инициализации. Переопределить нужные методы суперкласса. shapeDescription должен вернуть shape is circle и shape is square соответственно.
 //Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
 
-let sqr = Square(size: 6.0, name: "Квадрат")
-let circle = Circle(radius: 8.7, name: "Круг")
+let sqr = Square(size: 6.0, name: "Квадрат 5 на 5")
+let circle = Circle(radius: 8.7, name: "Круг 8.7")
 
 let sqr2 = Square(size: 10.0, name: "Квадрат 10 на 10")
 let circle2 = Circle(radius: 15.5, name: "Круг 15")
@@ -175,16 +175,28 @@ let circle2 = Circle(radius: 15.5, name: "Круг 15")
 print("Площадь квадрата размером \(sqr.size) = \(sqr.areaSize)") // Площадь квадрата размером 6.0 = 36.0
 print("Площадь круга радиусом \(circle.radius)= \(circle.areaSize)") // Площадь круга радиусом 8.7= 237.66659999999996
 
-print(sqr.shapeDescription()) // shape is Square
-print(circle.shapeDescription()) // shape is Circle
+print(sqr.shapeDescription()) // shape is Квадрат 5 на 5
+print(circle.shapeDescription()) // shape is Круг 8.7
 
-var figuresDict: Dictionary<Int, Shape> = [1: sqr, 2: circle, 3: sqr2, 4: circle2]
-// наполняем фигурами множество
 
-for figure in figuresDict {
-    print("\(figure.key). \(figure.value.shapeDescription())")
-    // 3. shape is Квадрат 10 на 10
-    // 1. shape is Квадрат
-    // 2. shape is Круг
-    // 4. shape is Круг 15
+//Создать несколько разных экземпляров каждого класса и поместить их в array. Проитерировав array напечатать shapeDescription и площадь
+var figuresArray: Array<Shape> = [sqr, sqr2, circle, circle2]
+
+for figure in figuresArray {
+    print("Описание: \(figure.shapeDescription())")
+    print("Площадь данной фигуры: \(figure.areaSize)")
+    print("--------------------------------------------------")
 }
+// вывод в консоль:
+// Описание: shape is Квадрат 5 на 5
+// Площадь данной фигуры: 36.0
+// --------------------------------------------------
+// Описание: shape is Квадрат 10 на 10
+// Площадь данной фигуры: 100.0
+// --------------------------------------------------
+// Описание: shape is Круг 8.7
+// Площадь данной фигуры: 237.66659999999996
+// --------------------------------------------------
+// Описание: shape is Круг 15
+// Площадь данной фигуры: 754.385
+// --------------------------------------------------
